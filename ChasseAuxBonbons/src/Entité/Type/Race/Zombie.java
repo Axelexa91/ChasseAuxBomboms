@@ -11,6 +11,6 @@ import Entité.Type.Undead;
  *
  * @author axelz
  */
-public class Zombie extends Undead{
+public abstract class Zombie extends Undead{
     
 }

@@ -10,11 +10,13 @@ package Entité.Type;
 import Entité.Entité;
 
 
+
 /**
  *
  * @author axelz
  */
-public class Alive extends Entité {
+public abstract class Alive extends Entité {
+    public abstract void SeSoigner();
     
     
     

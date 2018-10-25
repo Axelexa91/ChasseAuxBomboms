@@ -7,12 +7,13 @@ package Entité.Type;
 
 import Entité.Entité;
 
+
 /**
  *
  * @author axelz
  */
-public class Undead extends Entité{
-    
+public abstract class Undead extends Entité{
+    public abstract void FairePeur();
     
     
 }

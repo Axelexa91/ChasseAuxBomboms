@@ -13,7 +13,7 @@ import Entité.Type.Alive;
  *
  * @author axelz
  */
-public class Sorcier extends Alive{
+public abstract class Sorcier extends Alive{
     
     
 }
