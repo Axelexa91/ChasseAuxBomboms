@@ -11,6 +11,5 @@ import Entité.Type.Undead;
  *
  * @author axelz
  */
-public class Fantome extends Undead{
-    
+public abstract class Fantome extends Undead{
 }

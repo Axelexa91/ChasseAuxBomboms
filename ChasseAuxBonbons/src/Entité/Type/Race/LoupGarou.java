@@ -11,6 +11,6 @@ import Entité.Type.Alive;
  *
  * @author axelz
  */
-public class LoupGarou extends Alive{
+public abstract class LoupGarou extends Alive{
     
 }

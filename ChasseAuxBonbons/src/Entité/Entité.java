@@ -9,6 +9,15 @@ package Entité;
  *
  * @author axelz
  */
-public class Entité {
-    
+public abstract class Entité {
+    String nom;
+    Boolean estVivant;
+    public abstract void Parler(String paroles);
+    public abstract void Crier();
+    public abstract void Deplacer();
+    public abstract void Fouiller();
+    int defence;
+    int bonbons;
+    int pointsDeVie;
+    public abstract void voirDeplacement();
 }
