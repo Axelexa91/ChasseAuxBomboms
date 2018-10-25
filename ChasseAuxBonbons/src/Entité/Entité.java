@@ -10,14 +10,14 @@ package Entité;
  * @author axelz
  */
 public abstract class Entité {
-    String nom;
-    Boolean estVivant;
+    protected String nom;
+    protected boolean estVivant;
     public abstract void Parler(String paroles);
     public abstract void Crier();
     public abstract void Deplacer();
     public abstract void Fouiller();
-    int defence;
-    int bonbons;
-    int pointsDeVie;
+    protected int defence;
+    protected int bonbons;
+    protected int pointsDeVie;
     public abstract void voirDeplacement();
 }
