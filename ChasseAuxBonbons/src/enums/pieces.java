@@ -36,7 +36,7 @@ public enum pieces {
     cantine ("cantine"),
     isolement("isolement"),
     salle_de_torture ("salle_de_torture"),
-    cours ("cours");
+    cour ("cour");
     
     String lieu;
         
