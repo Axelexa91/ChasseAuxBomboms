@@ -15,8 +15,10 @@ public class Lieu {
     
     public Lieu(String Nom){
         Nom = Nom;
-        Entité[] Personnages = new Entité[0];
+        Personnages = new Entité[0];
     }
+    
+    
     
     String Nom;
     
