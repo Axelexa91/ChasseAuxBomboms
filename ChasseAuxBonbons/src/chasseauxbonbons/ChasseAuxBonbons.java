@@ -6,6 +6,7 @@
 package chasseauxbonbons;
 
 import Entité.Type.Race.Genre.*;
+import Lieux.Lieu;
 
 /**
  *
@@ -17,15 +18,13 @@ public class ChasseAuxBonbons {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Lieu Ville = new Lieu("Ville");
         
+       
         
-        
-        
-        
-        
-        
-        
-        
+    }
+    
+    public void InitVille(Lieu Ville){
         
     }
     

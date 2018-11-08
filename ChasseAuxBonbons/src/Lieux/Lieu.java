@@ -77,6 +77,7 @@ public class Lieu {
             }
             newPersonnages[Index+1] = Personnage;
             this.setPersonnages(newPersonnages);
+            return;
         }
     }
     
