@@ -6,6 +6,7 @@
 package chasseauxbonbons;
 
 import Entité.Type.Race.Genre.*;
+import enums.prenomGarcon;
 
 /**
  *
@@ -17,16 +18,9 @@ public class ChasseAuxBonbons {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    }
-    
-}
+            FantomeMale plop = new FantomeMale();
+            plop.Crier();
+            //plop.setNom(prenomGarcon.Adam.getPrenom());
+            //System.out.println(plop.toString());
+    } 
+  }       

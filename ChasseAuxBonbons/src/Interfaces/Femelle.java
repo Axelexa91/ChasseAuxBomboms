@@ -13,6 +13,6 @@ import Entité.Entité;
  */
 public interface Femelle {
     
-    void Voler(Entité Monstre);
+    public void Voler(Entité Monstre);
     
 }

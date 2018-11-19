@@ -9,15 +9,17 @@ package enums;
  *
  * @author Antoine
  */
-public enum batiments {
-    maison_hantee ("maison_hantee"),
-    eglise ("eglise"),
-    boucherie ("boucherie"),
-    prison ("prison");
+public enum boucherie {
+    comptoire ("comptoire"),
+    chambre_froide ("chambre_froide"),
+    abattoir ("abattoir"),
+    bureau ("bureau"),
+    porcherie ("porcherie"),
+    local_poubelle ( "local_poubelle");
     
     String lieu;
-    
-    private batiments(String lieu) {
+        
+    private boucherie(String lieu) {
         this.lieu = lieu;
     }
 

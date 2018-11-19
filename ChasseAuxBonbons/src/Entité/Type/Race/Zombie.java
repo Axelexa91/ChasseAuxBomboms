@@ -12,5 +12,13 @@ import Entité.Type.Undead;
  * @author axelz
  */
 public abstract class Zombie extends Undead{
+    @Override
+    public void Crier() {
+        System.out.println("Arrrgh !"); 
+    }
     
+    @Override
+    public void voirDeplacement(){
+       System.err.println("voir les déplacements possibles à faire");
+    }
 }

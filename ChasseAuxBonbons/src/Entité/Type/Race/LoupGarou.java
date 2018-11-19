@@ -12,5 +12,13 @@ import Entité.Type.Alive;
  * @author axelz
  */
 public abstract class LoupGarou extends Alive{
+    @Override
+    public void Crier() {
+        System.out.println("Grrrrr !"); 
+    }
     
+    @Override
+    public void voirDeplacement(){
+       System.err.println("voir les déplacements possibles à faire");
+    }
 }

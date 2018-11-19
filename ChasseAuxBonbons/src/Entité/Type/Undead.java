@@ -13,7 +13,8 @@ import Entité.Entité;
  * @author axelz
  */
 public abstract class Undead extends Entité{
-    public abstract void FairePeur();
-    
-    
+    public void FairePeur(){
+       System.err.println("faire perdre des bonbons à chaque personnage de la pièce");
+    }
+      
 }

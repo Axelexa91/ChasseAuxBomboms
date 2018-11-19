@@ -16,7 +16,9 @@ import Entité.Entité;
  * @author axelz
  */
 public abstract class Alive extends Entité {
-    public abstract void SeSoigner();
+    public void SeSoigner(){
+       System.err.println("gagner des pv");
+    }
     
     
     
