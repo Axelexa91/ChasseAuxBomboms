@@ -14,6 +14,13 @@ import Entité.Type.Alive;
  * @author axelz
  */
 public abstract class Sorcier extends Alive{
+    @Override
+    public void Crier() {
+        System.out.println("Hihihi !"); 
+    }
     
-    
+    @Override
+    public void voirDeplacement(){
+       System.err.println("voir les déplacements possibles à faire");
+    }
 }

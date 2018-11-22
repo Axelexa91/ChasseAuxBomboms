@@ -12,4 +12,13 @@ import Entité.Type.Undead;
  * @author axelz
  */
 public abstract class Fantome extends Undead{
+    @Override
+    public void Crier() {
+        System.out.println("Hoouuu !"); 
+    }
+    
+    @Override
+    public void voirDeplacement(){
+       System.err.println("voir les déplacements possibles à faire");
+    }
 }

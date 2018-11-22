@@ -9,28 +9,7 @@ package enums;
  *
  * @author Antoine
  */
-public enum pieces {
-    chambre ("chambre"),
-    salon ("salon"),
-    cuisine ("cuisine"),
-    cave ("cave"),
-    jardin ("jardin"),
-    toit ("toit"),
-    
-    chapelle ("chapelle"),
-    cimetiere ("cimetiere"),
-    clocher ("clocher"),
-    cloitre ("cloitre"),
-    tombe ("tombe"),
-    salle_de_sacrifice ("salle_de_sacrifice"),
-    
-    comptoire ("comptoire"),
-    chambre_froide ("chambre_froide"),
-    abattoir ("abattoir"),
-    bureau ("bureau"),
-    porcherie ("porcherie"),
-    local_poubelle ( "local_poubelle"),
-    
+public enum prison {
     cellule ("cellule"),
     sanitaire ("sanitaire"),
     cantine ("cantine"),
@@ -40,7 +19,7 @@ public enum pieces {
     
     String lieu;
         
-    private pieces(String lieu) {
+    private prison(String lieu) {
         this.lieu = lieu;
     }
 

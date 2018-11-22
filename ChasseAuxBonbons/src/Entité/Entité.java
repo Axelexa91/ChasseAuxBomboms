@@ -20,4 +20,11 @@ public abstract class Entité {
     protected int bonbons;
     protected int pointsDeVie;
     public abstract void voirDeplacement();
+    
+    
+    @Override
+    public String toString(){
+        String str = "Je suis un objet de la " + this.getClass() + ", je m'appelle " + this.nom;
+        return str;
+  } 
 }

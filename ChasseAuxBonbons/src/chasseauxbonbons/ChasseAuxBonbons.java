@@ -6,11 +6,13 @@
 package chasseauxbonbons;
 
 import Entité.Type.Race.Genre.*;
+
 import Lieux.Batiment.*;
 import Lieux.Piece.*;
 import Lieux.Dehors.*;
 
 import java.util.Random;
+
 
 
 /**
@@ -23,6 +25,7 @@ public class ChasseAuxBonbons {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
         Lieux.Dehors.Dehors Ville = InitVille(15);
         System.out.println(Ville.getBatiments()[0].getPieces());
         
@@ -77,4 +80,3 @@ public class ChasseAuxBonbons {
     }
     
 }
-
