@@ -12,6 +12,11 @@ import Entité.Type.Undead;
  * @author axelz
  */
 public abstract class Fantome extends Undead{
+
+    public Fantome(String Nom) {
+        super(Nom);
+    }
+    
     @Override
     public void Crier() {
         System.out.println("Hoouuu !"); 

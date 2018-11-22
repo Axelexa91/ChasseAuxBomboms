@@ -14,6 +14,10 @@ import Entité.Type.Alive;
  * @author axelz
  */
 public abstract class Sorcier extends Alive{
+
+    public Sorcier(String Nom) {
+        super(Nom);
+    }
     @Override
     public void Crier() {
         System.out.println("Hihihi !"); 

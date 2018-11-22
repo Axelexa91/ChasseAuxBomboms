@@ -12,6 +12,10 @@ import Entité.Type.Undead;
  * @author axelz
  */
 public abstract class Zombie extends Undead{
+
+    public Zombie(String Nom) {
+        super(Nom);
+    }
     @Override
     public void Crier() {
         System.out.println("Arrrgh !"); 

@@ -21,6 +21,10 @@ public abstract class Entité {
     public abstract void Fouiller();
     public abstract void voirDeplacement();
     
+    public Entité(String Nom){
+        this.nom = Nom;
+        this.bonbons = 0;
+    }
     
     @Override
     public String toString(){

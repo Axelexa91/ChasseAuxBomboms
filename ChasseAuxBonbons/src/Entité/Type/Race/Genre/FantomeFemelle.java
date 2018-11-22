@@ -13,8 +13,11 @@ import Entité.Type.Race.Fantome;
  */
 public class FantomeFemelle extends Fantome{
 
-    public FantomeFemelle() {
+    public FantomeFemelle(String Nom) {
+        super(Nom);
     }
+
+ 
 
     public String getNom() {
         return new String(nom);

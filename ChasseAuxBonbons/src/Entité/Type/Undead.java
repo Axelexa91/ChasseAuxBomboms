@@ -13,6 +13,10 @@ import Entité.Entité;
  * @author axelz
  */
 public abstract class Undead extends Entité{
+
+    public Undead(String Nom) {
+        super(Nom);
+    }
     public void FairePeur(){
        System.err.println("faire perdre des bonbons à chaque personnage de la pièce");
     }

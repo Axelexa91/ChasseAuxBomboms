@@ -16,6 +16,10 @@ import Entité.Entité;
  * @author axelz
  */
 public abstract class Alive extends Entité {
+
+    public Alive(String Nom) {
+        super(Nom);
+    }
     public void SeSoigner(){
        System.err.println("gagner des pv");
     }
