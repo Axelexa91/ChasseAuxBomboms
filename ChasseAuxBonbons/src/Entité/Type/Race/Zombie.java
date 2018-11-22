@@ -11,7 +11,7 @@ import Entité.Type.Undead;
  *
  * @author axelz
  */
-public abstract class Zombie extends Undead{
+public abstract class Zombie extends Undead {
 
     public Zombie(String Nom) {
         super(Nom);

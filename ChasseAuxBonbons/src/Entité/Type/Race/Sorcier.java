@@ -7,13 +7,11 @@ package Entité.Type.Race;
 
 import Entité.Type.Alive;
 
-
-
 /**
  *
  * @author axelz
  */
-public abstract class Sorcier extends Alive{
+public abstract class Sorcier extends Alive {
 
     public Sorcier(String Nom) {
         super(Nom);

@@ -11,7 +11,7 @@ import Entité.Type.Alive;
  *
  * @author axelz
  */
-public abstract class LoupGarou extends Alive{
+public abstract class LoupGarou extends Alive {
 
     public LoupGarou(String Nom) {
         super(Nom);

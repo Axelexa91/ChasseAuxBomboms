@@ -5,6 +5,7 @@
  */
 package chasseauxbonbons;
 
+import Entité.Entité;
 import Entité.Type.Race.Genre.*;
 
 import Lieux.Batiment.*;
@@ -137,7 +138,7 @@ public class ChasseAuxBonbons {
         
         for(int i = 0; i<= nbHabitant; i++){
             Random rand = new Random();
-            Entitee habitant;
+            Entité habitant;
             int habitantType = rand.nextInt(10);
             switch(habitantType){
                 case 0:

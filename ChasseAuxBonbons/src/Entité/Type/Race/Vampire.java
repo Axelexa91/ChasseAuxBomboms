@@ -11,7 +11,7 @@ import Entité.Type.Undead;
  *
  * @author axelz
  */
-public abstract class Vampire extends Undead{
+public abstract class Vampire extends Undead {
 
     public Vampire(String Nom) {
         super(Nom);
