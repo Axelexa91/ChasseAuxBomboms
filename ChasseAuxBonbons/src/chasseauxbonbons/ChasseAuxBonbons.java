@@ -35,8 +35,6 @@ public class ChasseAuxBonbons {
     }
     
     public static Dehors InitVille(int taille){
-        enums.prenomGarcon ListePrenomsGarcons[] = enums.prenomGarcon.values();
-        enums.prenomFille ListePrenomsFilles[] = enums.prenomFille.values();
         enums.batiments ListeBatiments[] = enums.batiments.values();
         Dehors Ville = new Dehors("Ville");
         
@@ -132,5 +130,40 @@ public class ChasseAuxBonbons {
         }
     }
     
-    
+    public static void InitHabitants(Dehors Ville){
+        enums.prenomGarcon ListePrenomsGarcons[] = enums.prenomGarcon.values();
+        enums.prenomFille ListePrenomsFilles[] = enums.prenomFille.values();
+        int nbHabitant = Ville.getBatiments().length * 3;
+        
+        for(int i = 0; i<= nbHabitant; i++){
+            Random rand = new Random();
+            Entitee habitant;
+            int habitantType = rand.nextInt(10);
+            switch(habitantType){
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+            }
+            
+            
+            
+        }
+    }
 }

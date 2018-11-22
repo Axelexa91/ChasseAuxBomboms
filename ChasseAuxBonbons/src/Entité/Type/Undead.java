@@ -12,7 +12,7 @@ import Entité.Entité;
  *
  * @author axelz
  */
-public abstract class Undead extends Entité{
+public abstract class Undead extends Entité {
 
     public Undead(String Nom) {
         super(Nom);
