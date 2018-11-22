@@ -16,7 +16,7 @@ public class Dehors extends Lieu{
 
     public Dehors(String Nom) {
         super(Nom);
-        Batiments = new Batiment[0];
+        this.Batiments = new Batiment[0];
     }
 
     Batiment[] Batiments;
@@ -36,7 +36,7 @@ public class Dehors extends Lieu{
             newBatiments[Index] = this.Batiments[Index];
             Index++;
         }
-        newBatiments[Index+1] = Batiment;
+        newBatiments[Index] = Batiment;
         this.setBatiments(newBatiments);
         return;
     }

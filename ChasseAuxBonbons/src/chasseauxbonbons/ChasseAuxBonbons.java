@@ -25,15 +25,16 @@ public class ChasseAuxBonbons {
     /**
      * @param args the command line arguments
      */
-    public void main(String[] args) {
+    public static void main(String[] args) {
 
-        Lieux.Dehors.Dehors Ville = InitVille(15);
-        System.out.println(Ville.getBatiments()[0].getPieces());
-               
+        Dehors Ville = InitVille(5);
+        System.out.println(Ville.getBatiments()[0].getPieces()[0].getBonbon() );
+        printVille(Ville);
+        
         
     }
     
-    public Dehors InitVille(int taille){
+    public static Dehors InitVille(int taille){
         enums.prenomGarcon ListePrenomsGarcons[] = enums.prenomGarcon.values();
         enums.prenomFille ListePrenomsFilles[] = enums.prenomFille.values();
         enums.batiments ListeBatiments[] = enums.batiments.values();
@@ -41,7 +42,7 @@ public class ChasseAuxBonbons {
         
         for(int i=0; i<taille;i++){
             Random rand = new Random();
-            int randnumb = rand.nextInt(ListeBatiments.length- 0 +1)+ 0; // nextint(max - min + 1)-min;
+            int randnumb = rand.nextInt(ListeBatiments.length); // nextint(max - min + 1)-min;
             Ville.addBatiment(InitBatiment(ListeBatiments[randnumb].getLieu()));
         }
         
@@ -49,13 +50,13 @@ public class ChasseAuxBonbons {
         
     }
     
-    public Batiment InitBatiment(String nom){
+    public static Batiment InitBatiment(String nom){
         
         //Enum ListePieces[];
         
         Batiment Batiment = new Batiment(nom);        
         Random rand = new Random();
-        int nbPieces = rand.nextInt(8 - 3 +1)+ 3;
+        int nbPieces = rand.nextInt(5 - 2 +1)+ 2;
         
         if(enums.batiments.boucherie.getLieu().compareTo(nom) == 0){
             
@@ -63,7 +64,7 @@ public class ChasseAuxBonbons {
             
             for(int i =0;i<nbPieces;i++){
                 Random rand1 = new Random();
-                int nomPiece = rand.nextInt(ListePieces.length+1)+0;        
+                int nomPiece = rand.nextInt(ListePieces.length);        
                 Batiment.addPiece(InitPiece(ListePieces[nomPiece].getLieu()));
             }
             
@@ -75,7 +76,7 @@ public class ChasseAuxBonbons {
             
             for(int i =0;i<nbPieces;i++){
                 Random rand1 = new Random();
-                int nomPiece = rand.nextInt(ListePieces.length+1)+0;        
+                int nomPiece = rand.nextInt(ListePieces.length);        
                 Batiment.addPiece(InitPiece(ListePieces[nomPiece].getLieu()));
             }
             
@@ -87,7 +88,7 @@ public class ChasseAuxBonbons {
             
             for(int i =0;i<nbPieces;i++){
                 Random rand1 = new Random();
-                int nomPiece = rand.nextInt(ListePieces.length+1)+0;        
+                int nomPiece = rand.nextInt(ListePieces.length);        
                 Batiment.addPiece(InitPiece(ListePieces[nomPiece].getLieu()));
             }
             
@@ -99,7 +100,7 @@ public class ChasseAuxBonbons {
             
             for(int i =0;i<nbPieces;i++){
                 Random rand1 = new Random();
-                int nomPiece = rand.nextInt(ListePieces.length+1)+0;        
+                int nomPiece = rand.nextInt(ListePieces.length);        
                 Batiment.addPiece(InitPiece(ListePieces[nomPiece].getLieu()));
             }
             
@@ -112,7 +113,7 @@ public class ChasseAuxBonbons {
         }
     }
     
-    public Piece InitPiece(String Nom){
+    public static Piece InitPiece(String Nom){
         Random rand = new Random();
         int nbBonbons = rand.nextInt(5 - 1 +1)+ 1;
         
@@ -120,5 +121,16 @@ public class ChasseAuxBonbons {
         
         return Piece;
     }
+    
+    public static void printVille(Dehors Ville){
+        System.out.println("La ville du nom de : " + Ville);
+        for(Batiment batiment : Ville.getBatiments()){
+            System.out.println("-" + batiment.getNom() +":");
+            for(Piece piece : batiment.getPieces()){
+                System.out.println("    -" + piece.getNom() +":" + piece.getBonbon() + " bonbons");
+            }
+        }
+    }
+    
     
 }

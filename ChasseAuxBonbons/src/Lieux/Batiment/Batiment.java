@@ -16,7 +16,7 @@ public class Batiment extends Lieu{
 
     public Batiment(String Nom) {
         super(Nom);
-        Pieces = new Piece[0];
+        this.Pieces = new Piece[0];
     }
     
     Piece[] Pieces;
@@ -36,7 +36,7 @@ public class Batiment extends Lieu{
             newPieces[Index] = this.Pieces[Index];
             Index++;
         }
-        newPieces[Index+1] = Piece;
+        newPieces[Index] = Piece;
         this.setPieces(newPieces);
         return;
     }

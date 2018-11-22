@@ -14,7 +14,7 @@ import Entité.Entité;
 public class Lieu {
     
     public Lieu(String Nom){
-        Nom = Nom;
+        this.Nom = Nom;
         Personnages = new Entité[0];
     }
     
@@ -27,7 +27,7 @@ public class Lieu {
     
 
     public String getNom() {
-        return new String(Nom);
+        return new String(this.Nom);
     }
 
     public void setNom(String Nom) {

@@ -15,7 +15,7 @@ public class Piece extends Lieu{
     
     public Piece(String Nom,int bonbon) {
         super(Nom);
-        bonbon = bonbon;
+        this.bonbon = bonbon;
     }
     
     int bonbon;
