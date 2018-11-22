@@ -21,6 +21,12 @@ public abstract class Sorcier extends Alive {
         System.out.println("Hihihi !"); 
     }
     
+    
+    public String getRace(){
+        return new String("Sorcier");
+    }
+    
+    
     @Override
     public void voirDeplacement(){
        System.err.println("voir les déplacements possibles à faire");

@@ -21,6 +21,12 @@ public abstract class Vampire extends Undead {
         System.out.println("Sshhhhh !"); 
     }
     
+    
+    public String getRace(){
+        return new String("Vampire");
+    }
+    
+    
     @Override
     public void voirDeplacement(){
        System.err.println("voir les déplacements possibles à faire");

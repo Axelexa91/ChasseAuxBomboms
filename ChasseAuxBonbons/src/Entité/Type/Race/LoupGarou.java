@@ -21,6 +21,12 @@ public abstract class LoupGarou extends Alive {
         System.out.println("Grrrrr !"); 
     }
     
+    
+    public String getRace(){
+        return new String("Loup-Garou");
+    }
+    
+    
     @Override
     public void voirDeplacement(){
        System.err.println("voir les déplacements possibles à faire");

@@ -77,7 +77,7 @@ public class Lieu {
                 newPersonnages[Index] = this.Personnages[Index];
                 Index++;
             }
-            newPersonnages[Index+1] = Personnage;
+            newPersonnages[Index] = Personnage;
             this.setPersonnages(newPersonnages);
             return;
         }

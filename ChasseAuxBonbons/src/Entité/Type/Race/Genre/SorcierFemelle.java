@@ -19,8 +19,9 @@ public class SorcierFemelle extends Sorcier {
 
 
 
+    @Override
     public String getNom() {
-        return new String(nom);
+        return new String(this.getRace() +" "+ this.nom);
     }
 
     public void setNom(String nom) {

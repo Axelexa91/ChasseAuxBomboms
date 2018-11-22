@@ -21,6 +21,12 @@ public abstract class Zombie extends Undead {
         System.out.println("Arrrgh !"); 
     }
     
+    
+    public String getRace(){
+        return new String("Zombie");
+    }
+    
+    
     @Override
     public void voirDeplacement(){
        System.err.println("voir les déplacements possibles à faire");

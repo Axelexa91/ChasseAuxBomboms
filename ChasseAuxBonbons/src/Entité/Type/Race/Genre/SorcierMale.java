@@ -18,10 +18,7 @@ public class SorcierMale extends Sorcier {
     }
 
   
-
-    public String getNom() {
-        return new String(nom);
-    }
+    
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -73,6 +70,13 @@ public class SorcierMale extends Sorcier {
     public void Fouiller() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public String getNom() {
+        return new String(this.getRace() +" "+ this.nom);
+    }
+
+
 
     
 }

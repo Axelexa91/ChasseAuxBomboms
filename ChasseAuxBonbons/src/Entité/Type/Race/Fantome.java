@@ -21,6 +21,12 @@ public abstract class Fantome extends Undead {
         System.out.println("Hoouuu !"); 
     }
     
+    
+    public String getRace(){
+        return new String("Fantome");
+    }
+    
+    
     @Override
     public void voirDeplacement(){
        System.err.println("voir les déplacements possibles à faire");
