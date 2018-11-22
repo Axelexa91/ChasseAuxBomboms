@@ -11,7 +11,7 @@ import Entité.Type.Race.Sorcier;
  *
  * @author axelz
  */
-public class SorcierMale extends Sorcier{
+public class SorcierMale extends Sorcier {
 
     public SorcierMale(String Nom) {
         super(Nom);

@@ -11,7 +11,7 @@ import Entité.Type.Race.Fantome;
  *
  * @author axelz
  */
-public class FantomeFemelle extends Fantome{
+public class FantomeFemelle extends Fantome {
 
     public FantomeFemelle(String Nom) {
         super(Nom);

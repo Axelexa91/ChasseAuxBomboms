@@ -11,7 +11,7 @@ import Entité.Type.Race.Zombie;
  *
  * @author axelz
  */
-public class ZombieMale extends Zombie{
+public class ZombieMale extends Zombie {
 
     public ZombieMale(String Nom) {
         super(Nom);
