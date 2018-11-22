@@ -13,8 +13,11 @@ import Entité.Type.Race.Sorcier;
  */
 public class SorcierFemelle extends Sorcier{
 
-    public SorcierFemelle() {
+    public SorcierFemelle(String Nom) {
+        super(Nom);
     }
+
+
 
     public String getNom() {
         return new String(nom);

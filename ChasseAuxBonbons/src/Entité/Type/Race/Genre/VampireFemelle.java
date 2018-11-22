@@ -13,8 +13,11 @@ import Entité.Type.Race.Vampire;
  */
 public class VampireFemelle extends Vampire {
 
-    public VampireFemelle() {
+    public VampireFemelle(String Nom) {
+        super(Nom);
     }
+
+
 
     public String getNom() {
         return new String(nom);

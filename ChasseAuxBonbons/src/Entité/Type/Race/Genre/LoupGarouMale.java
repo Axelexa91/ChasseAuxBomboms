@@ -13,9 +13,12 @@ import Entité.Type.Race.LoupGarou;
  */
 public class LoupGarouMale extends LoupGarou{
 
-    public LoupGarouMale() {
+    public LoupGarouMale(String Nom) {
+        super(Nom);
     }
-
+   
+    
+    
     public String getNom() {
         return new String(nom);
     }

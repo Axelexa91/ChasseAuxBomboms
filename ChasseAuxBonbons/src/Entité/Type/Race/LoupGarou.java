@@ -12,6 +12,10 @@ import Entité.Type.Alive;
  * @author axelz
  */
 public abstract class LoupGarou extends Alive{
+
+    public LoupGarou(String Nom) {
+        super(Nom);
+    }
     @Override
     public void Crier() {
         System.out.println("Grrrrr !"); 

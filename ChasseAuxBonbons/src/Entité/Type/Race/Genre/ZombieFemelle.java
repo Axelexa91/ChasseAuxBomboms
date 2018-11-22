@@ -13,8 +13,11 @@ import Entité.Type.Race.Zombie;
  */
 public class ZombieFemelle extends Zombie{
 
-    public ZombieFemelle() {
+    public ZombieFemelle(String Nom) {
+        super(Nom);
     }
+
+
 
     public String getNom() {
         return new String(nom);
