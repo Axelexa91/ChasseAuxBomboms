@@ -12,13 +12,13 @@ package Entité;
 public abstract class Entité {
     protected String nom;
     protected boolean estVivant;
+    protected int defence;
+    protected int bonbons;
+    protected int pointsDeVie;
     public abstract void Parler(String paroles);
     public abstract void Crier();
     public abstract void Deplacer();
     public abstract void Fouiller();
-    protected int defence;
-    protected int bonbons;
-    protected int pointsDeVie;
     public abstract void voirDeplacement();
     
     
