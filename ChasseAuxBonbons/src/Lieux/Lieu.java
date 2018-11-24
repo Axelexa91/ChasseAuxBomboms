@@ -53,7 +53,7 @@ public class Lieu {
                 if(personnagePresent != Personnage){
                     newPersonnages[Index] = this.Personnages[Index];
                 }
-            Index ++;
+                Index ++;
             }
             this.setPersonnages(newPersonnages);
             return;

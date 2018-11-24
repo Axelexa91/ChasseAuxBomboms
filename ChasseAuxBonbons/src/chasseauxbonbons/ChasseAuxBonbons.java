@@ -5,6 +5,8 @@
  */
 package chasseauxbonbons;
 
+import java.util.Scanner;
+
 import Entité.Entité;
 import Entité.Type.Race.*;
 import Entité.Type.Race.Genre.*;
@@ -12,6 +14,7 @@ import Entité.Type.Race.Genre.*;
 import Lieux.Batiment.*;
 import Lieux.Piece.*;
 import Lieux.Dehors.*;
+import Lieux.Lieu;
 import enums.batiments;
 
 import java.util.Random;
@@ -28,11 +31,19 @@ public class ChasseAuxBonbons {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        Scanner keyboard = new Scanner(System.in);
 
         Dehors Ville = InitVille(5);
         //System.out.println(Ville.getBatiments()[0].getPieces()[0].getBonbon() );
         InitHabitants(Ville);
         printVille(Ville);
+        int nbToursTest = 10;
+        for(int i = 0;i<=nbToursTest;i++){
+            //String test = keyboard.nextLine();
+            DeplacementPNJ(Ville);
+            printVille(Ville);
+        }
         
         
     }
@@ -125,16 +136,29 @@ public class ChasseAuxBonbons {
     
     public static void printVille(Dehors Ville){
         System.out.println("La ville du nom de : " + Ville.getNom());
+        
         System.out.print("  Personnages : ");
         for(Entité habitant : Ville.getPersonnages()){
-            
             System.out.print(habitant.getNom() + ", ");
         }
         System.out.println();
+        
         for(Batiment batiment : Ville.getBatiments()){
-            System.out.println("        -" + batiment.getNom() +":");
+            System.out.println();
+            System.out.println("    -" + batiment.getNom() +":");
+                System.out.print("      Personnages : ");
+                for(Entité habitant : batiment.getPersonnages()){
+                    System.out.print(habitant.getNom() + ", ");
+                }
+                System.out.println();
+                
             for(Piece piece : batiment.getPieces()){
-                System.out.println("                -" + piece.getNom() +":" + piece.getBonbon() + " bonbons");
+                System.out.println("       -" + piece.getNom() +":" + piece.getBonbon() + " bonbons");
+                System.out.print("          Personnages : ");
+                for(Entité habitant : piece.getPersonnages()){
+                    System.out.print(habitant.getNom() + ", ");
+                }
+                System.out.println();
             }
         }
     }
@@ -197,12 +221,49 @@ public class ChasseAuxBonbons {
     public static void DeplacementPNJ(Dehors Ville){
         
         Random rand = new Random();
+        int quantiteMouvement = 1; // represente le nombres aproximatif de PNJ bougeant chaque tour en 1/quantiteMouvment : 1 -> ilsbougent tous, 2 -> environ a moitié, 3 -> environ un tier etc...
+        int index = 0;
         
         for(Batiment batimentActuel : Ville.getBatiments()){
             for(Piece pieceActuel : batimentActuel.getPieces()){
-                
+                for(Entité personnageActuel : pieceActuel.getPersonnages()){
+                    if(rand.nextInt(quantiteMouvement)+1 == quantiteMouvement){
+                        Lieu[] listeDeplacementPossible = new Lieu[personnageActuel.voirDeplacement(batimentActuel, Ville).length+1];
+                        int i = 0;
+                        for(Lieu deplacement : personnageActuel.voirDeplacement(pieceActuel, Ville)){
+                            listeDeplacementPossible[i] = deplacement;
+                            i++;
+                        }
+                        listeDeplacementPossible[-1] = Ville;
+                        personnageActuel.seDeplacer(pieceActuel, listeDeplacementPossible[rand.nextInt(listeDeplacementPossible.length+1)]);
+                    }
+                }
             }
+            for(Entité personnageActuel : batimentActuel.getPersonnages()){
+                    if(rand.nextInt(quantiteMouvement)+1 == quantiteMouvement){
+                        Lieu[] listeDeplacementPossible = new Lieu[personnageActuel.voirDeplacement(batimentActuel, Ville).length+1];
+                        int i = 0;
+                        for(Lieu deplacement : personnageActuel.voirDeplacement(batimentActuel, Ville)){
+                            listeDeplacementPossible[i] = deplacement;
+                            i++;
+                        }
+                        listeDeplacementPossible[-1] = Ville;
+                        personnageActuel.seDeplacer(batimentActuel, listeDeplacementPossible[rand.nextInt(listeDeplacementPossible.length+1)]);
+                    }
+                }
         }
+        for(Entité personnageActuel : Ville.getPersonnages()){
+                    if(rand.nextInt(quantiteMouvement)+1 == quantiteMouvement){
+                        Lieu[] listeDeplacementPossible = new Lieu[personnageActuel.voirDeplacement(Ville, Ville).length];
+                        int i = 0;
+                        for(Lieu deplacement : personnageActuel.voirDeplacement(Ville, Ville)){
+                            listeDeplacementPossible[i] = deplacement;
+                            i++;
+                        }
+                        
+                        personnageActuel.seDeplacer(Ville, listeDeplacementPossible[rand.nextInt(listeDeplacementPossible.length)]);
+                    }
+                }
         
         
         
