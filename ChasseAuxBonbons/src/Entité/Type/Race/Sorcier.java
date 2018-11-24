@@ -6,6 +6,10 @@
 package Entité.Type.Race;
 
 import Entité.Type.Alive;
+import Lieux.Batiment.Batiment;
+import Lieux.Dehors.Dehors;
+import Lieux.Lieu;
+import Lieux.Piece.Piece;
 
 /**
  *
@@ -18,7 +22,7 @@ public abstract class Sorcier extends Alive {
     }
     @Override
     public void Crier() {
-        System.out.println("Hihihi !"); 
+        System.out.println("Hihihi ! Je sens une force bienveillante à vomir dans cette chapelle!"); 
     }
     
     
@@ -26,9 +30,28 @@ public abstract class Sorcier extends Alive {
         return new String("Sorcier");
     }
     
+    @Override
+    public void fouiller(Piece position){
+        if(position.getBonbon() != 0){
+            bonbons+=position.getBonbon();
+            System.out.println("Gnihihi~ voilà " + position.getBonbon() + "nouveaux bonbons pour ma potion !");
+            position.setBonbon(0);
+            System.out.println(this.bonbons + "au total pour cette année !");
+        }
+        else{
+            System.out.println("Aaaah... Mes potions ont besoins de bonbons, dommage qu'il n'y en ai plus ici...");
+        }
+
+    }
     
     @Override
-    public void voirDeplacement(){
-       System.err.println("voir les déplacements possibles à faire");
+    public void seDeplacer(Lieu position, Lieu cible){
+        if(cible.getNom().compareTo(enums.eglise.chapelle.getLieu()) == 0){
+            this.Crier();
+        }
+        else{
+            position.delPersonnages(this);
+            cible.addPersonnages(this);
+        }
     }
 }

@@ -6,6 +6,10 @@
 package Entité.Type.Race;
 
 import Entité.Type.Undead;
+import Lieux.Batiment.Batiment;
+import Lieux.Dehors.Dehors;
+import Lieux.Lieu;
+import Lieux.Piece.Piece;
 
 /**
  *
@@ -18,7 +22,7 @@ public abstract class Fantome extends Undead {
     }
     @Override
     public void Crier() {
-        System.out.println("Hoouuu !"); 
+        System.out.println("Hoouuu~ ! Je passe partouuut~"); 
     }
     
     
@@ -26,9 +30,27 @@ public abstract class Fantome extends Undead {
         return new String("Fantome");
     }
     
+    @Override
+    public void seDeplacer(Lieu position, Lieu cible){
+        this.Crier();
+        position.delPersonnages(this);
+        cible.addPersonnages(this);
+    }
     
     @Override
-    public void voirDeplacement(){
-       System.err.println("voir les déplacements possibles à faire");
+    public void fouiller(Piece position){
+        if(position.getBonbon() != 0){
+            bonbons+=position.getBonbon();
+            System.out.println("Houuu~ ! J'ai trouuuuu~vé" + position.getBonbon() + "bonboooooons~ !");
+            position.setBonbon(0);
+            System.out.println(this.bonbons + "bonboooooons~");
+        }
+        else{
+            System.out.println("Houuu~... Plus de bonbooons~");
+        }
+
     }
+
+
+    
 }

@@ -62,16 +62,6 @@ public class SorcierMale extends Sorcier {
     }
 
     @Override
-    public void Deplacer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void Fouiller() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public String getNom() {
         return new String(this.getRace() +" "+ this.nom);
     }

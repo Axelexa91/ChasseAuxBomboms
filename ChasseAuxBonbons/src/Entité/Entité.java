@@ -5,6 +5,11 @@
  */
 package Entité;
 
+import Lieux.Batiment.Batiment;
+import Lieux.Dehors.Dehors;
+import Lieux.Lieu;
+import Lieux.Piece.Piece;
+
 /**
  *
  * @author axelz
@@ -17,9 +22,8 @@ public abstract class Entité {
     protected int pointsDeVie;
     public abstract void Parler(String paroles);
     public abstract void Crier();
-    public abstract void Deplacer();
-    public abstract void Fouiller();
-    public abstract void voirDeplacement();
+
+    public abstract void fouiller(Piece position);
     public abstract String getNom();
     
     public Entité(String Nom){
@@ -27,6 +31,25 @@ public abstract class Entité {
         this.bonbons = 0;
     }
     
+    public abstract void seDeplacer(Lieu position, Lieu cible);
+    
+    
+    
+    public Lieu[] voirDeplacement(Lieu position,Dehors Ville){
+       if(position == Ville){
+           return Ville.getBatiments();
+       }
+       else{
+           if(position instanceof Batiment){
+               return ((Batiment) position).getPieces();
+           }
+           else if(position instanceof Piece){
+               System.err.println("Merci de donné le batiment actuel en parametre");
+               return null;
+           }
+       }
+       return null;
+    }
 
     
     @Override

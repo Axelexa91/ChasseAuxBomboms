@@ -141,7 +141,6 @@ public class ChasseAuxBonbons {
     
 
     
-    
     public static void InitHabitants(Dehors Ville){
         enums.prenomGarcon ListePrenomsGarcons[] = enums.prenomGarcon.values();
         enums.prenomFille ListePrenomsFilles[] = enums.prenomFille.values();
@@ -193,4 +192,24 @@ public class ChasseAuxBonbons {
             
         }
     }
+
+    
+    public static void DeplacementPNJ(Dehors Ville){
+        
+        Random rand = new Random();
+        
+        for(Batiment batimentActuel : Ville.getBatiments()){
+            for(Piece pieceActuel : batimentActuel.getPieces()){
+                
+            }
+        }
+        
+        
+        
+    }
+
+
+
+
+
 }

@@ -6,6 +6,10 @@
 package Entité.Type.Race;
 
 import Entité.Type.Undead;
+import Lieux.Batiment.Batiment;
+import Lieux.Dehors.Dehors;
+import Lieux.Lieu;
+import Lieux.Piece.Piece;
 
 /**
  *
@@ -18,7 +22,7 @@ public abstract class Zombie extends Undead {
     }
     @Override
     public void Crier() {
-        System.out.println("Arrrgh !"); 
+        System.out.println("Arrrgh ! J'ai déjà perdu assez de doigts comme cela dans un abatoir..."); 
     }
     
     
@@ -26,9 +30,29 @@ public abstract class Zombie extends Undead {
         return new String("Zombie");
     }
     
+    @Override
+    public void fouiller(Piece position){
+        if(position.getBonbon() != 0){
+            bonbons+=position.getBonbon();
+            System.out.println("Aaarg..." + position.getBonbon() + "bonbons de plus...");
+            position.setBonbon(0);
+            System.out.println(this.bonbons + "bonbons au total dans cette vie...");
+        }
+        else{
+            System.out.println("Plus de bonbons ?");
+        }
+
+    }
+    
     
     @Override
-    public void voirDeplacement(){
-       System.err.println("voir les déplacements possibles à faire");
+    public void seDeplacer(Lieu position, Lieu cible){
+        if(cible.getNom().compareTo(enums.boucherie.abattoir.getLieu()) == 0){
+            this.Crier();
+        }
+        else{
+            position.delPersonnages(this);
+            cible.addPersonnages(this);
+        }
     }
 }

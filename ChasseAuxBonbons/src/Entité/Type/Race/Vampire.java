@@ -6,6 +6,10 @@
 package Entité.Type.Race;
 
 import Entité.Type.Undead;
+import Lieux.Batiment.Batiment;
+import Lieux.Dehors.Dehors;
+import Lieux.Lieu;
+import Lieux.Piece.Piece;
 
 /**
  *
@@ -18,7 +22,7 @@ public abstract class Vampire extends Undead {
     }
     @Override
     public void Crier() {
-        System.out.println("Sshhhhh !"); 
+        System.out.println("Sshhhhh ! Ca empeste l'ail dans cette cantine !"); 
     }
     
     
@@ -26,9 +30,28 @@ public abstract class Vampire extends Undead {
         return new String("Vampire");
     }
     
+    @Override
+    public void fouiller(Piece position){
+        if(position.getBonbon() != 0){
+            bonbons+=position.getBonbon();
+            System.out.println("Mouahah ! " + position.getBonbon() + "bonbons pour l'aristocrate que je suis !");
+            position.setBonbon(0);
+            System.out.println(this.bonbons + " hein ? Ce n'est pas suffisant pour ma grandeur !");
+        }
+        else{
+            System.out.println("Qui à oser ! Il n'y a pas un seul bonbon ici !");
+        }
+
+    }
     
     @Override
-    public void voirDeplacement(){
-       System.err.println("voir les déplacements possibles à faire");
+    public void seDeplacer(Lieu position, Lieu cible){
+        if(cible.getNom().compareTo(enums.prison.cantine.getLieu()) == 0){
+            this.Crier();
+        }
+        else{
+            position.delPersonnages(this);
+            cible.addPersonnages(this);
+        }
     }
 }

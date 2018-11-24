@@ -14,7 +14,7 @@ public enum eglise {
     cimetiere ("cimetiere"),
     clocher ("clocher"),
     cloitre ("cloitre"),
-    tombe ("tombe"),
+    crypte ("crypte"),
     salle_de_sacrifice ("salle_de_sacrifice");
     
     String lieu;
