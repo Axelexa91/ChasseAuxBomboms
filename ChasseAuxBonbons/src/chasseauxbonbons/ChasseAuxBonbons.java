@@ -34,7 +34,7 @@ public class ChasseAuxBonbons {
         
         Scanner keyboard = new Scanner(System.in);
 
-        Dehors Ville = InitVille(5);
+        Dehors Ville = InitVille(1);
         //System.out.println(Ville.getBatiments()[0].getPieces()[0].getBonbon() );
         InitHabitants(Ville);
         printVille(Ville);
@@ -168,9 +168,9 @@ public class ChasseAuxBonbons {
     public static void InitHabitants(Dehors Ville){
         enums.prenomGarcon ListePrenomsGarcons[] = enums.prenomGarcon.values();
         enums.prenomFille ListePrenomsFilles[] = enums.prenomFille.values();
-        int nbHabitant = Ville.getBatiments().length * 3;
+        int nbHabitant = Ville.getBatiments().length * 2;
         
-        for(int i = 0; i<= nbHabitant; i++){
+        for(int i = 0; i< nbHabitant; i++){
             Random rand = new Random();
             Entité habitant;
             int habitantType = rand.nextInt(10);
@@ -230,12 +230,12 @@ public class ChasseAuxBonbons {
                     if(rand.nextInt(quantiteMouvement)+1 == quantiteMouvement){
                         Lieu[] listeDeplacementPossible = new Lieu[personnageActuel.voirDeplacement(batimentActuel, Ville).length+1];
                         int i = 0;
-                        for(Lieu deplacement : personnageActuel.voirDeplacement(pieceActuel, Ville)){
+                        for(Lieu deplacement : personnageActuel.voirDeplacement(batimentActuel, Ville)){
                             listeDeplacementPossible[i] = deplacement;
                             i++;
                         }
-                        listeDeplacementPossible[-1] = Ville;
-                        personnageActuel.seDeplacer(pieceActuel, listeDeplacementPossible[rand.nextInt(listeDeplacementPossible.length+1)]);
+                        listeDeplacementPossible[listeDeplacementPossible.length-1] = Ville;
+                        personnageActuel.seDeplacer(pieceActuel, listeDeplacementPossible[rand.nextInt(listeDeplacementPossible.length)]);
                     }
                 }
             }
@@ -247,8 +247,8 @@ public class ChasseAuxBonbons {
                             listeDeplacementPossible[i] = deplacement;
                             i++;
                         }
-                        listeDeplacementPossible[-1] = Ville;
-                        personnageActuel.seDeplacer(batimentActuel, listeDeplacementPossible[rand.nextInt(listeDeplacementPossible.length+1)]);
+                        listeDeplacementPossible[listeDeplacementPossible.length-1] = Ville;
+                        personnageActuel.seDeplacer(batimentActuel, listeDeplacementPossible[rand.nextInt(listeDeplacementPossible.length)]);
                     }
                 }
         }

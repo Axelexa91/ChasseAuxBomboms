@@ -52,14 +52,15 @@ public class Lieu {
             for (Entité personnagePresent : this.Personnages){
                 if(personnagePresent != Personnage){
                     newPersonnages[Index] = this.Personnages[Index];
+                    Index ++;
                 }
-                Index ++;
+                
             }
             this.setPersonnages(newPersonnages);
             return;
         }
         else{
-            System.err.println("Ce personnage n'est pas présent");
+            System.out.println("CE PERSONNAGE N'EST PAS PRESENT");
             return;
         }
         
@@ -67,7 +68,7 @@ public class Lieu {
     
     public void addPersonnages(Entité Personnage){
         if(this.estPresent(Personnage)){
-            System.err.println("Ce personnage est déjà présent");
+            System.out.println("CE PERSONNAGE EST DEJA PRESENT");
             return;
         }
         else{
@@ -84,12 +85,10 @@ public class Lieu {
     }
     
     public boolean estPresent(Entité Personnage){
-        int Index = 0;
         for(Entité personnagePresent : this.Personnages){
             if(personnagePresent == Personnage){
                 return true;
             }
-            Index++;
         }
         return false;
     }
