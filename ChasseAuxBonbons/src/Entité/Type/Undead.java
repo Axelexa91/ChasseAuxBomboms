@@ -6,6 +6,8 @@
 package Entité.Type;
 
 import Entité.Entité;
+import Lieux.Lieu;
+import Lieux.Piece.Piece;
 
 
 /**
@@ -17,8 +19,15 @@ public abstract class Undead extends Entité {
     public Undead(String Nom) {
         super(Nom);
     }
-    public void FairePeur(){
-       System.err.println("faire perdre des bonbons à chaque personnage de la pièce");
+    public void FairePeur(Lieu lieu){
+        for(Entité personnage : lieu.getPersonnages()){
+            if(personnage != this){
+                personnage.setBonbons(personnage.getBonbons()-1);
+                if(lieu instanceof Piece){
+                    ((Piece) lieu).setBonbon(((Piece) lieu).getBonbon()+1);
+                }
+            }
+        }
     }
       
 }

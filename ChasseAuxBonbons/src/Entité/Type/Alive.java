@@ -18,7 +18,8 @@ public abstract class Alive extends Entité {
         super(Nom);
     }
     public void SeSoigner(){
-       System.err.println("gagner des pv");
+       this.pointsDeVie++;
+       System.out.println(this.getNom() + " se. repose...");
     }
     
     

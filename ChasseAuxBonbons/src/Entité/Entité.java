@@ -22,8 +22,6 @@ public abstract class Entité {
     protected int pointsDeVie;
     public abstract void Parler(String paroles);
     public abstract void Crier();
-
-    
     public abstract String getNom();
     
     public Entité(String Nom){
@@ -61,11 +59,4 @@ public abstract class Entité {
     public int getBonbons(){
         return this.bonbons;
     }
-
-    
-    @Override
-    public String toString(){
-        String str = "Je suis un objet de la " + this.getClass() + ", je m'appelle " + this.nom;
-        return str;
-  } 
 }
