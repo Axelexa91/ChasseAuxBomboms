@@ -5,6 +5,7 @@
  */
 package Entité.Type.Race.Genre;
 
+import Entité.Entité;
 import Entité.Type.Race.Vampire;
 
 /**
@@ -18,6 +19,15 @@ public class VampireFemelle extends Vampire {
     }
 
 
+    public void Voler(Entité monstre){
+        if(!(monstre instanceof VampireMale) ){
+            this.bonbons += monstre.getBonbons();
+            monstre.setBonbons(0);
+        }
+        else{
+            System.out.println("Ne volez pas vos amis !");
+        }
+    }
 
     @Override
     public String getNom() {

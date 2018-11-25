@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package Entité.Type.Race.Genre;
-
+import Entité.Entité;
 import Entité.Type.Race.LoupGarou;
+import Lieux.Lieu;
 
 /**
  *
@@ -17,7 +18,16 @@ public class LoupGarouMale extends LoupGarou {
         super(Nom);
     }
    
-    
+    void Attaquer(Entité Monstre, Lieu position){
+        if(!(Monstre instanceof LoupGarouFemelle)){
+            this.bonbons+= Monstre.getBonbons();
+            Monstre.setBonbons(0);
+            position.delPersonnages(Monstre);
+        }
+        else{
+            System.out.println("Ne tuez pas vos amis !");
+        }
+    }
     
     @Override
     public String getNom() {

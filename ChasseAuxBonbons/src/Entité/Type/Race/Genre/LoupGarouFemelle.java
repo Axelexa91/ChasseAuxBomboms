@@ -5,6 +5,7 @@
  */
 package Entité.Type.Race.Genre;
 
+import Entité.Entité;
 import Entité.Type.Race.LoupGarou;
 
 /**
@@ -15,6 +16,16 @@ public class LoupGarouFemelle extends LoupGarou {
 
     public LoupGarouFemelle(String Nom) {
         super(Nom);
+    }
+    
+    public void Voler(Entité monstre){
+        if(!(monstre instanceof LoupGarouMale) ){
+            this.bonbons += monstre.getBonbons();
+            monstre.setBonbons(0);
+        }
+        else{
+            System.out.println("Ne volez pas vos amis !");
+        }
     }
 
     

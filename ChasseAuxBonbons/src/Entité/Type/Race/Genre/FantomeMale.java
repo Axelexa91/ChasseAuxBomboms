@@ -5,7 +5,9 @@
  */
 package Entité.Type.Race.Genre;
 
+import Entité.Entité;
 import Entité.Type.Race.Fantome;
+import Lieux.Lieu;
 
 /**
  *
@@ -17,7 +19,16 @@ public class FantomeMale extends Fantome {
         super(Nom);
     }
 
-
+    void Attaquer(Entité Monstre, Lieu position){
+        if(!(Monstre instanceof FantomeFemelle)){
+            this.bonbons+= Monstre.getBonbons();
+            Monstre.setBonbons(0);
+            position.delPersonnages(Monstre);
+        }
+        else{
+            System.out.println("Ne tuez pas vos amis !");
+        }
+    }
 
     @Override
     public String getNom() {

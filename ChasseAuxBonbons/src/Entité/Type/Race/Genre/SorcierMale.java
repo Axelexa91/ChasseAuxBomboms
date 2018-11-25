@@ -5,7 +5,9 @@
  */
 package Entité.Type.Race.Genre;
 
+import Entité.Entité;
 import Entité.Type.Race.Sorcier;
+import Lieux.Lieu;
 
 /**
  *
@@ -18,7 +20,16 @@ public class SorcierMale extends Sorcier {
     }
 
   
-    
+    void Attaquer(Entité Monstre, Lieu position){
+        if(!(Monstre instanceof SorcierFemelle)){
+            this.bonbons+= Monstre.getBonbons();
+            Monstre.setBonbons(0);
+            position.delPersonnages(Monstre);
+        }
+        else{
+            System.out.println("Ne tuez pas vos amis !");
+        }
+    }
 
     public void setNom(String nom) {
         this.nom = nom;

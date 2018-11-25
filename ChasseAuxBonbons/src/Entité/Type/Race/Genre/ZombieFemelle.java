@@ -5,6 +5,7 @@
  */
 package Entité.Type.Race.Genre;
 
+import Entité.Entité;
 import Entité.Type.Race.Zombie;
 
 /**
@@ -18,7 +19,17 @@ public class ZombieFemelle extends Zombie {
     }
 
 
+    public void Voler(Entité monstre){
+        if(!(monstre instanceof ZombieMale) ){
+            this.bonbons += monstre.getBonbons();
+            monstre.setBonbons(0);
+        }
+        else{
+            System.out.println("Ne volez pas vos amis !");
+        }
+    }
 
+    
     @Override
     public String getNom() {
         return new String(this.getRace() +" "+ this.nom);
