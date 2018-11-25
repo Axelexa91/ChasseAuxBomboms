@@ -51,7 +51,7 @@ public class Lieu {
             Entité[] newPersonnages = new Entité[this.Personnages.length-1];
             for (Entité personnagePresent : this.Personnages){
                 if(personnagePresent != Personnage){
-                    newPersonnages[Index] = this.Personnages[Index];
+                    newPersonnages[Index] = personnagePresent;
                     Index ++;
                 }
                 
@@ -75,7 +75,7 @@ public class Lieu {
             int Index = 0;
             Entité[] newPersonnages = new Entité[this.Personnages.length+1];
             for (Entité personnageActuel : this.Personnages){
-                newPersonnages[Index] = this.Personnages[Index];
+                newPersonnages[Index] = personnageActuel;
                 Index++;
             }
             newPersonnages[Index] = Personnage;
@@ -92,6 +92,7 @@ public class Lieu {
         }
         return false;
     }
+
     
     
     

@@ -7,6 +7,7 @@ package chasseauxbonbons;
 
 import java.util.Scanner;
 
+
 import Entité.Entité;
 import Entité.Type.Race.*;
 import Entité.Type.Race.Genre.*;
