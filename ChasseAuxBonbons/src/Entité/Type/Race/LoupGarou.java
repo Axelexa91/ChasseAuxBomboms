@@ -22,7 +22,7 @@ public abstract class LoupGarou extends Alive {
     }
     @Override
     public void Crier() {
-        System.out.println("Grrrrr ! Je n'aime pas les services en argent de cette cuisine !"); 
+        System.out.println(this.getNom() + ": Grrrrr ! Je n'aime pas les services en argent de cette cuisine !"); 
     }
     
     
@@ -34,12 +34,12 @@ public abstract class LoupGarou extends Alive {
     public void fouiller(Piece position){
         if(position.getBonbon() != 0){
             bonbons+=position.getBonbon();
-            System.out.println("Ahouu~ ! J'ai trouvé" + position.getBonbon() + "bonbons !");
+            System.out.println(this.getNom() +": Ahouu~ ! J'ai trouvé " + position.getBonbon() + " bonbons !");
             position.setBonbon(0);
-            System.out.println("Ca m'en fait" + this.bonbons);
+            System.out.println(this.getNom() +": Ca m'en fait " + this.bonbons);
         }
         else{
-            System.out.println("Grrrr ! Qu'est-ce que je vais me mettre sous la dent s'il n'y a plus de bonbons ici ?");
+            System.out.println(this.getNom() +": Grrrr ! Qu'est-ce que je vais me mettre sous la dent s'il n'y a plus de bonbons ici ?");
         }
 
     }

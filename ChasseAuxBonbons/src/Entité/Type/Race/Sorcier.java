@@ -22,7 +22,7 @@ public abstract class Sorcier extends Alive {
     }
     @Override
     public void Crier() {
-        System.out.println("Hihihi ! Je sens une force bienveillante à vomir dans cette chapelle!"); 
+        System.out.println(this.getNom() +": Hihihi ! Je sens une force bienveillante à vomir dans cette chapelle!"); 
     }
     
     
@@ -34,12 +34,12 @@ public abstract class Sorcier extends Alive {
     public void fouiller(Piece position){
         if(position.getBonbon() != 0){
             bonbons+=position.getBonbon();
-            System.out.println("Gnihihi~ voilà " + position.getBonbon() + "nouveaux bonbons pour ma potion !");
+            System.out.println(this.getNom() +": Gnihihi~ voilà " + position.getBonbon() + " nouveaux bonbons pour ma potion !");
             position.setBonbon(0);
-            System.out.println(this.bonbons + "au total pour cette année !");
+            System.out.println(this.getNom() +": " +this.bonbons + " au total pour cette année !");
         }
         else{
-            System.out.println("Aaaah... Mes potions ont besoins de bonbons, dommage qu'il n'y en ai plus ici...");
+            System.out.println(this.getNom() +": Aaaah... Mes potions ont besoins de bonbons, dommage qu'il n'y en ai plus ici...");
         }
 
     }

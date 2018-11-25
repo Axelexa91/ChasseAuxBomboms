@@ -22,7 +22,7 @@ public abstract class Vampire extends Undead {
     }
     @Override
     public void Crier() {
-        System.out.println("Sshhhhh ! Ca empeste l'ail dans cette cantine !"); 
+        System.out.println(this.getNom() + ": Sshhhhh ! Ca empeste l'ail dans cette cantine !"); 
     }
     
     
@@ -34,12 +34,12 @@ public abstract class Vampire extends Undead {
     public void fouiller(Piece position){
         if(position.getBonbon() != 0){
             bonbons+=position.getBonbon();
-            System.out.println("Mouahah ! " + position.getBonbon() + "bonbons pour l'aristocrate que je suis !");
+            System.out.println(this.getNom() +": Mouahah ! " + position.getBonbon() + " bonbons pour l'aristocrate que je suis !");
             position.setBonbon(0);
-            System.out.println(this.bonbons + " hein ? Ce n'est pas suffisant pour ma grandeur !");
+            System.out.println(this.getNom() + ": " +this.bonbons + " hein ? Ce n'est pas suffisant pour ma grandeur !");
         }
         else{
-            System.out.println("Qui à oser ! Il n'y a pas un seul bonbon ici !");
+            System.out.println(this.getNom() +": Qui à oser ! Il n'y a pas un seul bonbon ici !");
         }
 
     }

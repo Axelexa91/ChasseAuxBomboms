@@ -22,7 +22,7 @@ public abstract class Fantome extends Undead {
     }
     @Override
     public void Crier() {
-        System.out.println("Hoouuu~ ! Je passe partouuut~"); 
+        System.out.println(this.getNom() + ": Hoouuu~ ! Je passe partouuut~"); 
     }
     
     
@@ -32,7 +32,7 @@ public abstract class Fantome extends Undead {
     
     @Override
     public void seDeplacer(Lieu position, Lieu cible){
-        this.Crier();
+        //this.Crier();
         position.delPersonnages(this);
         cible.addPersonnages(this);
     }
@@ -41,12 +41,12 @@ public abstract class Fantome extends Undead {
     public void fouiller(Piece position){
         if(position.getBonbon() != 0){
             bonbons+=position.getBonbon();
-            System.out.println("Houuu~ ! J'ai trouuuuu~vé" + position.getBonbon() + "bonboooooons~ !");
+            System.out.println(this.getNom() + ": Houuu~ ! J'ai trouuuuu~vé " + position.getBonbon() + " bonboooooons~ !");
             position.setBonbon(0);
-            System.out.println(this.bonbons + "bonboooooons~");
+            System.out.println(this.getNom() + ": " +this.bonbons + " bonboooooons~");
         }
         else{
-            System.out.println("Houuu~... Plus de bonbooons~");
+            System.out.println(this.getNom() +": Houuu~... Plus de bonbooons~");
         }
 
     }

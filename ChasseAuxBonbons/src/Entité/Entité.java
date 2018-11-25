@@ -23,7 +23,7 @@ public abstract class Entité {
     public abstract void Parler(String paroles);
     public abstract void Crier();
 
-    public abstract void fouiller(Piece position);
+    
     public abstract String getNom();
     
     public Entité(String Nom){
@@ -33,7 +33,10 @@ public abstract class Entité {
     
     public abstract void seDeplacer(Lieu position, Lieu cible);
     
-    
+    public void fouiller(Piece position){
+        this.bonbons += position.getBonbon();
+        position.setBonbon(0);
+    }
     
     public Lieu[] voirDeplacement(Lieu position,Dehors Ville){
        if(position == Ville){
@@ -49,6 +52,14 @@ public abstract class Entité {
            }
        }
        return null;
+    }
+    
+    public void setBonbons(int nbBonbons){
+        this.bonbons = nbBonbons;
+    }
+    
+    public int getBonbons(){
+        return this.bonbons;
     }
 
     

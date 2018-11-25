@@ -39,13 +39,16 @@ public class ChasseAuxBonbons {
         //System.out.println(Ville.getBatiments()[0].getPieces()[0].getBonbon() );
         InitHabitants(Ville);
         printVille(Ville);
-        int nbToursTest = 10;
-        for(int i = 0;i<=nbToursTest;i++){
+        int nbTours = 0;
+        while(resteDesBonbons(Ville)){ //joue une partie jusqu'a epuisement des bonbons dans la ville
+            nbTours++;
             //String test = keyboard.nextLine();
             DeplacementPNJ(Ville);
             printVille(Ville);
         }
-        
+        System.out.println(nbTours + " tours de jeu avant la fin de la partie");
+        classementFinal(Ville);
+        printVille(Ville);
         
     }
     
@@ -128,7 +131,7 @@ public class ChasseAuxBonbons {
     
     public static Piece InitPiece(String Nom){
         Random rand = new Random();
-        int nbBonbons = rand.nextInt(5 - 1 +1)+ 1;
+        int nbBonbons = rand.nextInt(6 - 1 +1)+ 1;
         
         Piece Piece = new Piece(Nom,nbBonbons);
         
@@ -136,11 +139,12 @@ public class ChasseAuxBonbons {
     }
     
     public static void printVille(Dehors Ville){
+        System.out.println("---------------------------------------------------------------------------------------");
         System.out.println("La ville du nom de : " + Ville.getNom());
         
         System.out.print("  Personnages : ");
         for(Entité habitant : Ville.getPersonnages()){
-            System.out.print(habitant.getNom() + ", ");
+            System.out.print(habitant.getNom() + "("+ habitant.getBonbons() +")" + ", ");
         }
         System.out.println();
         
@@ -149,7 +153,7 @@ public class ChasseAuxBonbons {
             System.out.println("    -" + batiment.getNom() +":");
                 System.out.print("      Personnages : ");
                 for(Entité habitant : batiment.getPersonnages()){
-                    System.out.print(habitant.getNom() + ", ");
+                    System.out.print(habitant.getNom() + "("+ habitant.getBonbons() +")" + ", ");
                 }
                 System.out.println();
                 
@@ -157,19 +161,19 @@ public class ChasseAuxBonbons {
                 System.out.println("       -" + piece.getNom() +":" + piece.getBonbon() + " bonbons");
                 System.out.print("          Personnages : ");
                 for(Entité habitant : piece.getPersonnages()){
-                    System.out.print(habitant.getNom() + ", ");
+                    System.out.print(habitant.getNom() + "("+ habitant.getBonbons() +")" + ", ");
                 }
                 System.out.println();
             }
         }
     }
     
-
     
+
     public static void InitHabitants(Dehors Ville){
         enums.prenomGarcon ListePrenomsGarcons[] = enums.prenomGarcon.values();
         enums.prenomFille ListePrenomsFilles[] = enums.prenomFille.values();
-        int nbHabitant = Ville.getBatiments().length * 2;
+        int nbHabitant = Ville.getBatiments().length * 3;
         
         for(int i = 0; i< nbHabitant; i++){
             Random rand = new Random();
@@ -222,7 +226,7 @@ public class ChasseAuxBonbons {
     public static void DeplacementPNJ(Dehors Ville){
         
         Random rand = new Random();
-        int quantiteMouvement = 1; // represente le nombres aproximatif de PNJ bougeant chaque tour en 1/quantiteMouvment : 1 -> ilsbougent tous, 2 -> environ a moitié, 3 -> environ un tier etc...
+        int quantiteMouvement = 4; // represente le nombres aproximatif de PNJ bougeant chaque tour en 1/quantiteMouvment : 1 -> ilsbougent tous, 2 -> environ a moitié, 3 -> environ un tier etc...
         int index = 0;
         
         for(Batiment batimentActuel : Ville.getBatiments()){
@@ -236,7 +240,12 @@ public class ChasseAuxBonbons {
                             i++;
                         }
                         listeDeplacementPossible[listeDeplacementPossible.length-1] = Ville;
-                        personnageActuel.seDeplacer(pieceActuel, listeDeplacementPossible[rand.nextInt(listeDeplacementPossible.length)]);
+                        Lieu pieceCible = listeDeplacementPossible[rand.nextInt(listeDeplacementPossible.length)];
+                        personnageActuel.seDeplacer(pieceActuel, pieceCible);
+                        if(pieceActuel instanceof Piece){ //normalement tjr le cas
+                            personnageActuel.fouiller((Piece)pieceActuel);
+                        }
+                        
                     }
                 }
             }
@@ -249,7 +258,8 @@ public class ChasseAuxBonbons {
                             i++;
                         }
                         listeDeplacementPossible[listeDeplacementPossible.length-1] = Ville;
-                        personnageActuel.seDeplacer(batimentActuel, listeDeplacementPossible[rand.nextInt(listeDeplacementPossible.length)]);
+                        Lieu pieceCible = listeDeplacementPossible[rand.nextInt(listeDeplacementPossible.length)];
+                        personnageActuel.seDeplacer(batimentActuel, pieceCible);
                     }
                 }
         }
@@ -261,8 +271,8 @@ public class ChasseAuxBonbons {
                             listeDeplacementPossible[i] = deplacement;
                             i++;
                         }
-                        
-                        personnageActuel.seDeplacer(Ville, listeDeplacementPossible[rand.nextInt(listeDeplacementPossible.length)]);
+                        Lieu pieceCible = listeDeplacementPossible[rand.nextInt(listeDeplacementPossible.length)];
+                        personnageActuel.seDeplacer(Ville, pieceCible);
                     }
                 }
         
@@ -270,8 +280,41 @@ public class ChasseAuxBonbons {
         
     }
 
+    public static boolean resteDesBonbons(Dehors Ville){
+        for(Batiment batimentActuel : Ville.getBatiments()){
+            for(Piece pieceActuel : batimentActuel.getPieces()){
+                if (pieceActuel.getBonbon() != 0) return true;
+            }
+        }
+        return false;
+    }
 
-
-
+    public static void classementFinal(Dehors Ville){
+        for(Batiment batimentActuel : Ville.getBatiments()){
+            for(Piece pieceActuel : batimentActuel.getPieces()){
+                for(Entité personnageActuel : pieceActuel.getPersonnages()){
+                    personnageActuel.seDeplacer(pieceActuel, Ville);
+                }
+            }
+            for(Entité personnageActuel : batimentActuel.getPersonnages()){
+                    personnageActuel.seDeplacer(batimentActuel, Ville);
+                }
+        }
+        boolean trieEnCours = true;
+        Entité[] classement = Ville.getPersonnages();
+        while(trieEnCours){
+            trieEnCours = false;
+            
+            for(int index = 0; index < classement.length-1; index++){
+                if( classement[index].getBonbons() < classement[index+1].getBonbons()){
+                    Entité tampon = classement[index];
+                    classement[index] = classement[index+1];
+                    classement[index+1] = tampon;
+                    trieEnCours = true;
+                }
+            }
+        }
+        Ville.setPersonnages(classement);
+    }
 
 }

@@ -22,7 +22,7 @@ public abstract class Zombie extends Undead {
     }
     @Override
     public void Crier() {
-        System.out.println("Arrrgh ! J'ai déjà perdu assez de doigts comme cela dans un abatoir..."); 
+        System.out.println(this.getNom() + ": Arrrgh ! J'ai déjà perdu assez de doigts comme cela dans un abatoir..."); 
     }
     
     
@@ -34,12 +34,12 @@ public abstract class Zombie extends Undead {
     public void fouiller(Piece position){
         if(position.getBonbon() != 0){
             bonbons+=position.getBonbon();
-            System.out.println("Aaarg..." + position.getBonbon() + "bonbons de plus...");
+            System.out.println(this.getNom() + ": Aaarg... " + position.getBonbon() + " bonbons de plus...");
             position.setBonbon(0);
-            System.out.println(this.bonbons + "bonbons au total dans cette vie...");
+            System.out.println(this.getNom() + ": "+this.bonbons + " bonbons au total dans cette vie...");
         }
         else{
-            System.out.println("Plus de bonbons ?");
+            System.out.println(this.getNom() +": Plus de bonbons ?");
         }
 
     }
