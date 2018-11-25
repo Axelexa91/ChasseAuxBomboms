@@ -17,6 +17,10 @@ import Lieux.Piece.*;
 import Lieux.Dehors.*;
 import Lieux.Lieu;
 import enums.batiments;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import java.util.Random;
 
@@ -34,8 +38,14 @@ public class ChasseAuxBonbons {
     public static void main(String[] args) {
         
         Scanner keyboard = new Scanner(System.in);
-
-        Dehors Ville = InitVille(1);
+        Scanner saisieUtilisateur = new Scanner(System.in);
+        System.out.println("Veuillez saisir un nom pour votre ville :"); 
+        String nomVille = saisieUtilisateur.nextLine();
+        System.out.println("Veuillez saisir le nombre de batiments dans " + nomVille); 
+        int tailleVille = saisieUtilisateur.nextInt();
+        Dehors Ville = InitVille(tailleVille, nomVille);
+        printFichierTexte("C:\\Users\\Antoine\\Documents\\Java\\ville.txt");
+        System.out.println("Bienvenue à " + Ville.getNom());
         //System.out.println(Ville.getBatiments()[0].getPieces()[0].getBonbon() );
         InitHabitants(Ville);
         printVille(Ville);
@@ -51,10 +61,24 @@ public class ChasseAuxBonbons {
         printVille(Ville);
         
     }
-    
-    public static Dehors InitVille(int taille){
+    public static void printFichierTexte(String fichierTexte){
+        try{
+            InputStream flux=new FileInputStream(fichierTexte); 
+            InputStreamReader lecture=new InputStreamReader(flux);
+            BufferedReader buff=new BufferedReader(lecture);
+            String ligne;
+            while ((ligne=buff.readLine())!=null){
+                    System.out.println(ligne);
+            }
+            buff.close();
+    }		
+        catch (Exception e){
+            System.out.println(e.toString());
+        }
+    }
+    public static Dehors InitVille(int taille, String nomVille){
         enums.batiments ListeBatiments[] = enums.batiments.values();
-        Dehors Ville = new Dehors("Ville");
+        Dehors Ville = new Dehors(nomVille);
         
         for(int i=0; i<taille;i++){
             Random rand = new Random();
@@ -140,7 +164,7 @@ public class ChasseAuxBonbons {
     
     public static void printVille(Dehors Ville){
         System.out.println("---------------------------------------------------------------------------------------");
-        System.out.println("La ville du nom de : " + Ville.getNom());
+        System.out.println("Dans la ville de " + Ville.getNom());
         
         System.out.print("  Personnages : ");
         for(Entité habitant : Ville.getPersonnages()){
