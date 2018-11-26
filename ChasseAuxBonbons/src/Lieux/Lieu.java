@@ -60,7 +60,7 @@ public class Lieu {
             return;
         }
         else{
-            System.out.println("CE PERSONNAGE N'EST PAS PRESENT");
+            System.out.println("CE PERSONNAGE N'EST PAS PRESENT : " + Personnage.getNom());
             return;
         }
         
@@ -68,7 +68,7 @@ public class Lieu {
     
     public void addPersonnages(Entité Personnage){
         if(this.estPresent(Personnage)){
-            System.out.println("CE PERSONNAGE EST DEJA PRESENT");
+            System.out.println("CE PERSONNAGE EST DEJA PRESENT : " + Personnage.getNom());
             return;
         }
         else{

@@ -17,9 +17,9 @@ public abstract class Alive extends Entité {
     public Alive(String Nom) {
         super(Nom);
     }
-    public void SeSoigner(){
-       this.pointsDeVie++;
-       System.out.println(this.getNom() + " se. repose...");
+    public void chance(){
+       this.bonbons++;
+       System.out.println(this.getNom() + " a trouvé un bonbon par terre !");
     }
     
     

@@ -6,6 +6,7 @@
 package Interfaces;
 
 import Entité.Entité;
+import Lieux.Lieu;
 
 /**
  *
@@ -13,6 +14,6 @@ import Entité.Entité;
  */
 public interface Male {
     
-    void Attaquer(Entité Monstre);
+    void Attaquer(Entité Monstre, Lieu position);
     
 }

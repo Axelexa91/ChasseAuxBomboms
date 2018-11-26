@@ -6,23 +6,25 @@
 package Entité.Type.Race.Genre;
 import Entité.Entité;
 import Entité.Type.Race.LoupGarou;
+import Interfaces.Male;
 import Lieux.Lieu;
 
 /**
  *
  * @author axelz
  */
-public class LoupGarouMale extends LoupGarou {
+public class LoupGarouMale extends LoupGarou implements Male{
 
     public LoupGarouMale(String Nom) {
         super(Nom);
     }
    
-    void Attaquer(Entité Monstre, Lieu position){
-        if(!(Monstre instanceof LoupGarouFemelle)){
+    public void Attaquer(Entité Monstre, Lieu position){
+        if(!(Monstre instanceof LoupGarou)){
             this.bonbons+= Monstre.getBonbons();
             Monstre.setBonbons(0);
             position.delPersonnages(Monstre);
+            System.out.println(this.getNom() + " a mangé " + Monstre.getNom() +" ! ");
         }
         else{
             System.out.println("Ne tuez pas vos amis !");
@@ -38,22 +40,6 @@ public class LoupGarouMale extends LoupGarou {
         this.nom = nom;
     }
 
-    public boolean isEstVivant() {
-        return estVivant;
-    }
-
-    public void setEstVivant(boolean estVivant) {
-        this.estVivant = estVivant;
-    }
-
-    public int getDefence() {
-        return defence;
-    }
-
-    public void setDefence(int defence) {
-        this.defence = defence;
-    }
-
     public int getBonbons() {
         return bonbons;
     }
@@ -62,13 +48,6 @@ public class LoupGarouMale extends LoupGarou {
         this.bonbons = bonbons;
     }
 
-    public int getPointsDeVie() {
-        return pointsDeVie;
-    }
-
-    public void setPointsDeVie(int pointsDeVie) {
-        this.pointsDeVie = pointsDeVie;
-    }
 
     @Override
     public void Parler(String paroles) {

@@ -16,13 +16,11 @@ import Lieux.Piece.Piece;
  */
 public abstract class Entité {
     protected String nom;
-    protected boolean estVivant;
-    protected int defence;
     protected int bonbons;
-    protected int pointsDeVie;
+    
     public abstract void Parler(String paroles);
-    public abstract void Crier();
-    public abstract String getNom();
+    public abstract void Crier(); //defini dans les races pour que chacun est un cri different
+    public abstract String getNom(); //défini dans les races pour obtenir le prefixxe de race aux noms
     
     public Entité(String Nom){
         this.nom = Nom;

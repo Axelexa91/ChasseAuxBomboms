@@ -9,8 +9,12 @@ import java.util.Scanner;
 
 
 import Entité.Entité;
+import Entité.Type.Alive;
 import Entité.Type.Race.*;
 import Entité.Type.Race.Genre.*;
+import Entité.Type.Undead;
+import Interfaces.Femelle;
+import Interfaces.Male;
 
 import Lieux.Batiment.*;
 import Lieux.Piece.*;
@@ -37,24 +41,41 @@ public class ChasseAuxBonbons {
      */
     public static void main(String[] args) {
         
-        Scanner keyboard = new Scanner(System.in);
         Scanner saisieUtilisateur = new Scanner(System.in);
+        
         System.out.println("Veuillez saisir un nom pour votre ville :"); 
         String nomVille = saisieUtilisateur.nextLine();
+        
         System.out.println("Veuillez saisir le nombre de batiments dans " + nomVille); 
         int tailleVille = saisieUtilisateur.nextInt();
+        
         Dehors Ville = InitVille(tailleVille, nomVille);
-        printFichierTexte("C:\\Users\\Antoine\\Documents\\Java\\ville.txt");
+        
+        printFichierTexte("..\\ville.txt");
+        
         System.out.println("Bienvenue à " + Ville.getNom());
+        
         //System.out.println(Ville.getBatiments()[0].getPieces()[0].getBonbon() );
         InitHabitants(Ville);
+        
+        System.out.println("Appuyer sur entrée..."); 
+        saisieUtilisateur.nextLine();
+        saisieUtilisateur.nextLine();
+        
         printVille(Ville);
         int nbTours = 0;
         while(resteDesBonbons(Ville)){ //joue une partie jusqu'a epuisement des bonbons dans la ville
+            //System.out.println("Appuyer sur entrée pour passer le tour " + (nbTours + 1)); 
+            //saisieUtilisateur.nextLine(); //commenter cette ligne pour faire de grosses parties avec des tailles supérieur a 10
             nbTours++;
             //String test = keyboard.nextLine();
-            DeplacementPNJ(Ville);
+            System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_");
+            ActionsPNJ(Ville);//----------------------------------------------------------------------------------------------------------FONCTION PRINCIPALE QUI FAIT TOUT
+            System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_");
+            System.out.println("Appuyer sur entrée pour passer le tour " + nbTours); 
+            saisieUtilisateur.nextLine(); //commenter cette ligne pour faire de grosses parties avec des tailles supérieur a 10
             printVille(Ville);
+
         }
         System.out.println(nbTours + " tours de jeu avant la fin de la partie");
         classementFinal(Ville);
@@ -76,6 +97,7 @@ public class ChasseAuxBonbons {
             System.out.println(e.toString());
         }
     }
+    
     public static Dehors InitVille(int taille, String nomVille){
         enums.batiments ListeBatiments[] = enums.batiments.values();
         Dehors Ville = new Dehors(nomVille);
@@ -182,7 +204,7 @@ public class ChasseAuxBonbons {
                 System.out.println();
                 
             for(Piece piece : batiment.getPieces()){
-                System.out.println("       -" + piece.getNom() +":" + piece.getBonbon() + " bonbons");
+                System.out.println("       -" + piece.getNom() +":" +"["+ piece.getBonbon() +"]"+ " bonbons");
                 System.out.print("          Personnages : ");
                 for(Entité habitant : piece.getPersonnages()){
                     System.out.print(habitant.getNom() + "("+ habitant.getBonbons() +")" + ", ");
@@ -191,8 +213,6 @@ public class ChasseAuxBonbons {
             }
         }
     }
-    
-    
 
     public static void InitHabitants(Dehors Ville){
         enums.prenomGarcon ListePrenomsGarcons[] = enums.prenomGarcon.values();
@@ -247,7 +267,7 @@ public class ChasseAuxBonbons {
     }
 
     
-    public static void DeplacementPNJ(Dehors Ville){
+    public static void ActionsPNJ(Dehors Ville){
         
         Random rand = new Random();
         int quantiteMouvement = 4; // represente le nombres aproximatif de PNJ bougeant chaque tour en 1/quantiteMouvment : 1 -> ilsbougent tous, 2 -> environ a moitié, 3 -> environ un tier etc...
@@ -269,6 +289,22 @@ public class ChasseAuxBonbons {
                         if(pieceActuel instanceof Piece){ //normalement tjr le cas
                             personnageActuel.fouiller((Piece)pieceActuel);
                         }
+                        if((pieceActuel.getPersonnages().length > 1) && (rand.nextInt(quantiteMouvement) != 0)){ //si il n'est pas seul et que l'envie lui prend
+                            if(personnageActuel instanceof Male){ //attaquee s'il en a la possibilité
+                                Entité cibleAttaque = pieceActuel.getPersonnages()[rand.nextInt(pieceActuel.getPersonnages().length)];
+                                if(cibleAttaque != personnageActuel) ((Male) personnageActuel).Attaquer(cibleAttaque, pieceActuel);
+                            }
+                            else if(personnageActuel instanceof Femelle){ //sinon vole au lieu d'attauqer
+                                Entité cibleVole = pieceActuel.getPersonnages()[rand.nextInt(pieceActuel.getPersonnages().length)];
+                                if(cibleVole != personnageActuel) ((Femelle) personnageActuel).Voler(cibleVole);
+                            }
+                            if(personnageActuel instanceof Alive){ //plus activation d'un passif de type
+                                ((Alive) personnageActuel).chance();
+                            }
+                            else if(personnageActuel instanceof Undead){
+                                ((Undead) personnageActuel).FairePeur(pieceActuel);
+                            }
+                        }
                         
                     }
                 }
@@ -284,6 +320,22 @@ public class ChasseAuxBonbons {
                         listeDeplacementPossible[listeDeplacementPossible.length-1] = Ville;
                         Lieu pieceCible = listeDeplacementPossible[rand.nextInt(listeDeplacementPossible.length)];
                         personnageActuel.seDeplacer(batimentActuel, pieceCible);
+                        if((batimentActuel.getPersonnages().length > 1) && (rand.nextInt(quantiteMouvement) != 0)){ //si il n'est pas seul et que l'envie lui prend
+                            if(personnageActuel instanceof Male){ //attaquee s'il en a la possibilité
+                                Entité cibleAttaque = batimentActuel.getPersonnages()[rand.nextInt(batimentActuel.getPersonnages().length)];
+                                if(cibleAttaque != personnageActuel) ((Male) personnageActuel).Attaquer(cibleAttaque, batimentActuel);
+                            }
+                            else if(personnageActuel instanceof Femelle){ //sinon vole au lieu d'attauqer
+                                Entité cibleVole = batimentActuel.getPersonnages()[rand.nextInt(batimentActuel.getPersonnages().length)];
+                                if(cibleVole != personnageActuel) ((Femelle) personnageActuel).Voler(cibleVole);
+                            }
+                            if(personnageActuel instanceof Alive){ //plus activation d'un passif de type
+                                ((Alive) personnageActuel).chance();
+                            }
+                            else if(personnageActuel instanceof Undead){
+                                ((Undead) personnageActuel).FairePeur(batimentActuel);
+                            }
+                        }
                     }
                 }
         }
@@ -297,6 +349,22 @@ public class ChasseAuxBonbons {
                         }
                         Lieu pieceCible = listeDeplacementPossible[rand.nextInt(listeDeplacementPossible.length)];
                         personnageActuel.seDeplacer(Ville, pieceCible);
+                        if((Ville.getPersonnages().length > 1) && (rand.nextInt(quantiteMouvement) != 0)){ //si il n'est pas seul et que l'envie lui prend
+                            if(personnageActuel instanceof Male){ //attaquee s'il en a la possibilité
+                                Entité cibleAttaque = Ville.getPersonnages()[rand.nextInt(Ville.getPersonnages().length)];
+                                if(cibleAttaque != personnageActuel) ((Male) personnageActuel).Attaquer(cibleAttaque, Ville);
+                            }
+                            else if(personnageActuel instanceof Femelle){ //sinon vole au lieu d'attauqer
+                                Entité cibleVole = Ville.getPersonnages()[rand.nextInt(Ville.getPersonnages().length)];
+                                if(cibleVole != personnageActuel) ((Femelle) personnageActuel).Voler(cibleVole);
+                            }
+                            if(personnageActuel instanceof Alive){ //plus activation d'un passif de type
+                                ((Alive) personnageActuel).chance();
+                            }
+                            else if(personnageActuel instanceof Undead){
+                                ((Undead) personnageActuel).FairePeur(Ville);
+                            }
+                        }
                     }
                 }
         

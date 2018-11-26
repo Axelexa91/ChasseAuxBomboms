@@ -7,12 +7,13 @@ package Entité.Type.Race.Genre;
 
 import Entité.Entité;
 import Entité.Type.Race.Sorcier;
+import Interfaces.Femelle;
 
 /**
  *
  * @author axelz
  */
-public class SorcierFemelle extends Sorcier {
+public class SorcierFemelle extends Sorcier implements Femelle{
 
     public SorcierFemelle(String Nom) {
         super(Nom);
@@ -21,9 +22,10 @@ public class SorcierFemelle extends Sorcier {
     
     
     public void Voler(Entité monstre){
-        if(!(monstre instanceof SorcierMale) ){
+        if(!(monstre instanceof Sorcier) ){
             this.bonbons += monstre.getBonbons();
             monstre.setBonbons(0);
+            System.out.println(this.getNom() + " a volé tous les bonbons de " + monstre.getNom() +" ! ");
         }
         else{
             System.out.println("Ne volez pas vos amis !");
@@ -40,22 +42,6 @@ public class SorcierFemelle extends Sorcier {
         this.nom = nom;
     }
 
-    public boolean isEstVivant() {
-        return estVivant;
-    }
-
-    public void setEstVivant(boolean estVivant) {
-        this.estVivant = estVivant;
-    }
-
-    public int getDefence() {
-        return defence;
-    }
-
-    public void setDefence(int defence) {
-        this.defence = defence;
-    }
-
     public int getBonbons() {
         return bonbons;
     }
@@ -64,14 +50,6 @@ public class SorcierFemelle extends Sorcier {
         this.bonbons = bonbons;
     }
 
-    public int getPointsDeVie() {
-        return pointsDeVie;
-    }
-
-    public void setPointsDeVie(int pointsDeVie) {
-        this.pointsDeVie = pointsDeVie;
-    }
-    
     @Override
     public void Parler(String paroles) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

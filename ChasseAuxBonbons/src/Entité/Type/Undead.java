@@ -21,8 +21,9 @@ public abstract class Undead extends Entité {
     }
     public void FairePeur(Lieu lieu){
         for(Entité personnage : lieu.getPersonnages()){
-            if(personnage != this){
+            if((personnage != this) && (personnage.getBonbons()!=0)){
                 personnage.setBonbons(personnage.getBonbons()-1);
+                System.out.println(this.getNom() + " a effrayé tous le monde !");
                 if(lieu instanceof Piece){
                     ((Piece) lieu).setBonbon(((Piece) lieu).getBonbon()+1);
                 }

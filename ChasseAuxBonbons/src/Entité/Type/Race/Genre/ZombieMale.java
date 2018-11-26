@@ -7,23 +7,25 @@ package Entité.Type.Race.Genre;
 
 import Entité.Entité;
 import Entité.Type.Race.Zombie;
+import Interfaces.Male;
 import Lieux.Lieu;
 
 /**
  *
  * @author axelz
  */
-public class ZombieMale extends Zombie {
+public class ZombieMale extends Zombie implements Male{
 
     public ZombieMale(String Nom) {
         super(Nom);
     }
 
-    void Attaquer(Entité Monstre, Lieu position){
-        if(!(Monstre instanceof ZombieFemelle)){
+    public void Attaquer(Entité Monstre, Lieu position){
+        if(!(Monstre instanceof Zombie)){
             this.bonbons+= Monstre.getBonbons();
             Monstre.setBonbons(0);
             position.delPersonnages(Monstre);
+            System.out.println(this.getNom() + " a machouillé " + Monstre.getNom() +" ! ");
         }
         else{
             System.out.println("Ne tuez pas vos amis !");
@@ -38,23 +40,6 @@ public class ZombieMale extends Zombie {
     public void setNom(String nom) {
         this.nom = nom;
     }
-
-    public boolean isEstVivant() {
-        return estVivant;
-    }
-
-    public void setEstVivant(boolean estVivant) {
-        this.estVivant = estVivant;
-    }
-
-    public int getDefence() {
-        return defence;
-    }
-
-    public void setDefence(int defence) {
-        this.defence = defence;
-    }
-
     public int getBonbons() {
         return bonbons;
     }
@@ -62,15 +47,7 @@ public class ZombieMale extends Zombie {
     public void setBonbons(int bonbons) {
         this.bonbons = bonbons;
     }
-
-    public int getPointsDeVie() {
-        return pointsDeVie;
-    }
-
-    public void setPointsDeVie(int pointsDeVie) {
-        this.pointsDeVie = pointsDeVie;
-    }
-
+    
     @Override
     public void Parler(String paroles) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

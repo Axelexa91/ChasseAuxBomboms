@@ -7,24 +7,26 @@ package Entité.Type.Race.Genre;
 
 import Entité.Entité;
 import Entité.Type.Race.Sorcier;
+import Interfaces.Male;
 import Lieux.Lieu;
 
 /**
  *
  * @author axelz
  */
-public class SorcierMale extends Sorcier {
+public class SorcierMale extends Sorcier implements Male{
 
     public SorcierMale(String Nom) {
         super(Nom);
     }
 
   
-    void Attaquer(Entité Monstre, Lieu position){
-        if(!(Monstre instanceof SorcierFemelle)){
+    public void Attaquer(Entité Monstre, Lieu position){
+        if(!(Monstre instanceof Sorcier)){
             this.bonbons+= Monstre.getBonbons();
             Monstre.setBonbons(0);
             position.delPersonnages(Monstre);
+            System.out.println(this.getNom() + " a empoisonné " + Monstre.getNom() +" ! ");
         }
         else{
             System.out.println("Ne tuez pas vos amis !");
@@ -35,21 +37,6 @@ public class SorcierMale extends Sorcier {
         this.nom = nom;
     }
 
-    public boolean isEstVivant() {
-        return estVivant;
-    }
-
-    public void setEstVivant(boolean estVivant) {
-        this.estVivant = estVivant;
-    }
-
-    public int getDefence() {
-        return defence;
-    }
-
-    public void setDefence(int defence) {
-        this.defence = defence;
-    }
 
     public int getBonbons() {
         return bonbons;
@@ -59,13 +46,6 @@ public class SorcierMale extends Sorcier {
         this.bonbons = bonbons;
     }
 
-    public int getPointsDeVie() {
-        return pointsDeVie;
-    }
-
-    public void setPointsDeVie(int pointsDeVie) {
-        this.pointsDeVie = pointsDeVie;
-    }
 
     @Override
     public void Parler(String paroles) {

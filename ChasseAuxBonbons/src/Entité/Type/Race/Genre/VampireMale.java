@@ -7,23 +7,25 @@ package Entité.Type.Race.Genre;
 
 import Entité.Entité;
 import Entité.Type.Race.Vampire;
+import Interfaces.Male;
 import Lieux.Lieu;
 
 /**
  *
  * @author axelz
  */
-public class VampireMale extends Vampire {
+public class VampireMale extends Vampire implements Male{
 
     public VampireMale(String Nom) {
         super(Nom);
     }
 
-    void Attaquer(Entité Monstre, Lieu position){
-        if(!(Monstre instanceof VampireFemelle)){
+    public void Attaquer(Entité Monstre, Lieu position){
+        if(!(Monstre instanceof Vampire)){
             this.bonbons+= Monstre.getBonbons();
             Monstre.setBonbons(0);
             position.delPersonnages(Monstre);
+            System.out.println(this.getNom() + " a mordu " + Monstre.getNom() +" ! ");
         }
         else{
             System.out.println("Ne tuez pas vos amis !");
@@ -39,21 +41,6 @@ public class VampireMale extends Vampire {
         this.nom = nom;
     }
 
-    public boolean isEstVivant() {
-        return estVivant;
-    }
-
-    public void setEstVivant(boolean estVivant) {
-        this.estVivant = estVivant;
-    }
-
-    public int getDefence() {
-        return defence;
-    }
-
-    public void setDefence(int defence) {
-        this.defence = defence;
-    }
 
     public int getBonbons() {
         return bonbons;
@@ -63,13 +50,6 @@ public class VampireMale extends Vampire {
         this.bonbons = bonbons;
     }
 
-    public int getPointsDeVie() {
-        return pointsDeVie;
-    }
-
-    public void setPointsDeVie(int pointsDeVie) {
-        this.pointsDeVie = pointsDeVie;
-    }
 
     @Override
     public void Parler(String paroles) {

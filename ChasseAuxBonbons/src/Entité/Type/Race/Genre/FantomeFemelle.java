@@ -7,12 +7,13 @@ package Entité.Type.Race.Genre;
 
 import Entité.Entité;
 import Entité.Type.Race.Fantome;
+import Interfaces.Femelle;
 
 /**
  *
  * @author axelz
  */
-public class FantomeFemelle extends Fantome {
+public class FantomeFemelle extends Fantome implements Femelle{
 
     public FantomeFemelle(String Nom) {
         super(Nom);
@@ -21,9 +22,10 @@ public class FantomeFemelle extends Fantome {
  
     
     public void Voler(Entité monstre){
-        if(!(monstre instanceof FantomeMale) ){
+        if(!(monstre instanceof Fantome) ){
             this.bonbons += monstre.getBonbons();
             monstre.setBonbons(0);
+            System.out.println(this.getNom() + " a volé tous les bonbons de " + monstre.getNom() +" ! ");
         }
         else{
             System.out.println("Ne volez pas vos amis !");
@@ -40,21 +42,6 @@ public class FantomeFemelle extends Fantome {
         this.nom = nom;
     }
 
-    public Boolean getEstVivant() {
-        return estVivant;
-    }
-
-    public void setEstVivant(Boolean estVivant) {
-        this.estVivant = estVivant;
-    }
-
-    public int getDefence() {
-        return defence;
-    }
-
-    public void setDefence(int defence) {
-        this.defence = defence;
-    }
 
     public int getBonbons() {
         return bonbons;
@@ -62,14 +49,6 @@ public class FantomeFemelle extends Fantome {
 
     public void setBonbons(int bonbons) {
         this.bonbons = bonbons;
-    }
-
-    public int getPointsDeVie() {
-        return pointsDeVie;
-    }
-
-    public void setPointsDeVie(int pointsDeVie) {
-        this.pointsDeVie = pointsDeVie;
     }
 
 
