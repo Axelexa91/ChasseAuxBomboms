@@ -49,12 +49,6 @@ public class VampireFemelle extends Vampire implements Femelle {
     }
 
 
-    @Override
-    public void Parler(String paroles) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
 
     
 }

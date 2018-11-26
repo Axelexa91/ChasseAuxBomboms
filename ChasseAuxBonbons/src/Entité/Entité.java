@@ -18,7 +18,6 @@ public abstract class Entité {
     protected String nom;
     protected int bonbons;
     
-    public abstract void Parler(String paroles);
     public abstract void Crier(); //defini dans les races pour que chacun est un cri different
     public abstract String getNom(); //défini dans les races pour obtenir le prefixxe de race aux noms
     
