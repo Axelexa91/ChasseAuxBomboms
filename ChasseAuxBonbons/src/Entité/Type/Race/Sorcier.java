@@ -33,6 +33,7 @@ public abstract class Sorcier extends Alive {
     @Override
     public void fouiller(Piece position){
         if(position.getBonbon() != 0){
+            if(position.getNom().compareTo(enums.maison_hantee.cave.getLieu()) == 0) position.setBonbon(position.getBonbon()*2); //application du bonus raciale
             bonbons+=position.getBonbon();
             System.out.println(this.getNom() +": Gnihihi~ voilà " + position.getBonbon() + " nouveaux bonbons pour ma potion !");
             position.setBonbon(0);

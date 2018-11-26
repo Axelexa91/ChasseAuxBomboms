@@ -33,6 +33,7 @@ public abstract class Vampire extends Undead {
     @Override
     public void fouiller(Piece position){
         if(position.getBonbon() != 0){
+            if(position.getNom().compareTo(enums.prison.salle_de_torture.getLieu()) == 0) position.setBonbon(position.getBonbon()*2); //application du bonus raciale
             bonbons+=position.getBonbon();
             System.out.println(this.getNom() +": Mouahah ! " + position.getBonbon() + " bonbons pour l'aristocrate que je suis !");
             position.setBonbon(0);

@@ -33,6 +33,7 @@ public abstract class Zombie extends Undead {
     @Override
     public void fouiller(Piece position){
         if(position.getBonbon() != 0){
+            if(position.getNom().compareTo(enums.eglise.cimetiere.getLieu()) == 0) position.setBonbon(position.getBonbon()*2); //application du bonus raciale
             bonbons+=position.getBonbon();
             System.out.println(this.getNom() + ": Aaarg... " + position.getBonbon() + " bonbons de plus...");
             position.setBonbon(0);

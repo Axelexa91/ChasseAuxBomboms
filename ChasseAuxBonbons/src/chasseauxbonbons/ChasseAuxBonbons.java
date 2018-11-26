@@ -46,7 +46,7 @@ public class ChasseAuxBonbons {
         System.out.println("Veuillez saisir un nom pour votre ville :"); 
         String nomVille = saisieUtilisateur.nextLine();
         
-        System.out.println("Veuillez saisir le nombre de batiments dans " + nomVille); 
+        System.out.println("Veuillez saisir le nombre de batiments dans " + nomVille +" (entre 2 et 5 pour une experience optimal) "); 
         int tailleVille = saisieUtilisateur.nextInt();
         
         Dehors Ville = InitVille(tailleVille, nomVille);
@@ -77,9 +77,10 @@ public class ChasseAuxBonbons {
             printVille(Ville);
 
         }
-        System.out.println(nbTours + " tours de jeu avant la fin de la partie");
         classementFinal(Ville);
         printVille(Ville);
+        System.out.println("Le vainqueur de la chasse de cette année est : " + Ville.getPersonnages()[0].getNom() + " !");
+        System.out.println("Il n'a fallu que " + nbTours + " tours de jeu avant la fin de la partie !");
         
     }
     public static void printFichierTexte(String fichierTexte){
@@ -217,7 +218,7 @@ public class ChasseAuxBonbons {
     public static void InitHabitants(Dehors Ville){
         enums.prenomGarcon ListePrenomsGarcons[] = enums.prenomGarcon.values();
         enums.prenomFille ListePrenomsFilles[] = enums.prenomFille.values();
-        int nbHabitant = Ville.getBatiments().length * 3;
+        int nbHabitant = Ville.getBatiments().length * 5;
         
         for(int i = 0; i< nbHabitant; i++){
             Random rand = new Random();

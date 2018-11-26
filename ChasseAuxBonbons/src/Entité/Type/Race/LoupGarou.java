@@ -33,6 +33,7 @@ public abstract class LoupGarou extends Alive {
     @Override
     public void fouiller(Piece position){
         if(position.getBonbon() != 0){
+            if(position.getNom().compareTo(enums.boucherie.abattoir.getLieu()) == 0) position.setBonbon(position.getBonbon()*2); //application du bonus raciale
             bonbons+=position.getBonbon();
             System.out.println(this.getNom() +": Ahouu~ ! J'ai trouvé " + position.getBonbon() + " bonbons !");
             position.setBonbon(0);
